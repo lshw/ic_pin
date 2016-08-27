@@ -1,0 +1,79 @@
+<html>
+<head>
+<link href='all.css' rel=stylesheet>
+<link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAADEwfj/Rzvr/yUX5/8TBeX/DwPl/yUX5/8dDuf/Fgbm/x8Q5/8pG+j/FQbm/yca6P8uIen/Fwjm/ywe6P+emfT/Lyfo/zkx6v/a2Pv/6Oj9/5qT9P8hGOf/BwDk/xQD5v8MAOX/GxDm/7Gt9//z8/7/9PT+/5eR9P8AAOP/LCfo/xgL5v+6tvj/0tD6/5KM8//6+f7/7u79/zIo6f8MAOX/AwDk/5WQ9P/i4fz/Qzfr/0g96//g3vz/hH7y/wkA5P8ZCeb/b2bv/+3s/f8iGef/HBbm//////+Ri/P/DgDl/wAA4/+blvT/x8b5/wAA4/8AAOP/Liro/8fD+f8gEuf/KRro/wEA5P+IgvL//////5uX9P/29f7/gX3x/0xE7P8/N+r/XVzt//////9CNuv/CgDk/xYJ5v+zsvf/PTDq/yES5/8RAeX/AgDk/09F7P/v7/3//////3Ns8P8AAOL/Lifo/7ax9///////RTrr/wQA5P8gFOf/t7X3/ycZ6P8dDub/DwDl/wkD5P8AAOH/ubn3///////LzPn/sK72/8XC+f//////fXfx/w0A5f8FAOT/TUfs/6yp9v8MAOX/HA3m/xAB5f9hWO7/YFfu/3Ns8P//////ko3z/2Zf7v/9/v//5uX8/19X7v8WB+b/AADj/7Wz9/9jW+7/CwDk/w8A5f9mXe7//////9HP+v/n5vz/+/v///////81NOn/mpn0/+7t/f//////V0/t/1RN7f/Ixvn/AwDk/x0O5v8eD+b/Jxno/+np/f+Jg/L/b2fv///////8/f//Nyvp/3dw8P/8/f//5+b8/zct6f/Ixvn/U0zt/wAA4/80Jun/Kxzo/wIA5P8nH+j/6uj9/6ej9f8+Mur/JRvn/wYA5P8lGef/mpT0/y8l6f9CO+v/yMj5/wAA4v8PAOX/IxXn/y0f6P8PAOX/CwHl/xEJ5f/V0vr/ycb5/0tA7P8KAOX/DwLl/wID4/8AAOP/TkLs//r7/v+JhPL/EADl/yIU5/8tH+j/DgDl/w4A5f85LOr/4eD8////////////dm7w/wcA5P8ZCeb/EwLl/xID5f+2s/f/oJv1/wUA5P8nGef/Nyzp/xAA5f8DAOT/ioPy///////5+f7//////9va+/8UBeb/EgLl/xQE5v8RA+X/CADk/wgB5P8PAOX/KiDo/15W7f8AAOP/DAHl/xQI5v9kWu7/zcv6/9jX+/9gVu7/BgDk/wsC5f8IAOT/CgDl/wgA5P8LAuX/AADj/0U86//m5fz/aV/u/y8i6P8kFef/DADl/xgK5v87Lun/JBXn/yMV5/9DN+r/SDzr/z8y6v9hV+7/VEnt/2JY7v/a2Pv/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" rel="icon" type="image/x-icon">
+<style type="text/css">
+<!--
+ table {
+margin:2px;
+       border-collapse:collapse;
+border:solid #000;
+       border-width:1px 0 0 1px;
+padding:1px;
+}
+ td {
+border:solid #000;
+       border-width:0 1px 1px 0;
+}
+-->
+</style>
+<script src=all.js></script>
+<script>
+$(document).ready(function() {
+  var table =  $('#gpio').DataTable({
+"ajax":"ls1c_176a.txt",
+"iDisplayLength": 200,
+"paging":false,
+fixedHeader: {
+            header: true,
+        }
+} );
+} );
+function update_cpu(cpu) {
+var table = $('#gpio').DataTable();
+ 
+table.ajax.url( cpu ).load();
+
+}
+
+</script>
+<meta charset="utf-8">
+</head>
+<body>
+<h1>龙芯1C300a</h1>
+针对不同的应用场合，龙芯 1C 有 3 种封装形式：QFP100、QFP176A 和
+QFP176U。其中，QFP176A 封装支持 ADC 接口，QFP176U 封装支持全功能串
+口 UART。<br>
+<input type=radio name=package value=QFP100 onclick=update_cpu("ls1c_100.txt")>QFP100&nbsp;&nbsp;
+<input type=radio name=package value=QFP176A checked onclick=update_cpu("ls1c_176a.txt")>QFP176A&nbsp;&nbsp;
+<input type=radio name=package value=QFP176U onclick=update_cpu("ls1c_176u.txt")>QFP176U&nbsp;&nbsp;
+
+
+<table class='display' id=gpio cellspacing="0" width="100%">
+<thead>
+<td>NAME</td>
+<td>腿号</td>
+<td>GPIO</td>
+<td>第一复用</td>
+<td>第二复用</td>
+<td>第三复用</td>
+<td>第四复用</td>
+<td>第五复用</td>
+<td>默认复用</td>
+</tr>
+</thead>
+<tfoot>
+<td>NAME</td>
+<td>腿号</td>
+<td>GPIO</td>
+<td>第一复用</td>
+<td>第二复用</td>
+<td>第三复用</td>
+<td>第四复用</td>
+<td>第五复用</td>
+<td>默认复用</td>
+</tr></tfoot>
+</table>
+
+</body>
+</html>
